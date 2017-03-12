@@ -1,5 +1,4 @@
 
-
 #include "./pile.h"
 
 
@@ -18,17 +17,16 @@ pile_t * InitialisationPile (int TaillePile)
 
 		pile->NumeroSommet = -1;
 
-		pile->tab = (objet_t *)malloc(TaillePile * sizeof(objet_t));	/* allouer un tableau de donnees de taille taille_pille*/
+		pile->tab = (objet_t *)malloc(TaillePile * sizeof(objet_t));	/* allouer un tableau de donnees de taille TaillePile */
 
-		if(pile->tab == NULL)						/* si l'allocation du n'a pas reussit*/
+		if(pile->tab == NULL)						/* si l'allocation de tab est echouée*/
 		  {
 		    
-		    free(pile);
+		    free(pile);							/* on libere la Pile */
 
 		    pile = NULL;
 
 		  }
-
 	}
 
 	return pile;
@@ -56,7 +54,7 @@ void empiler(pile_t * pile, int val)
 
 	  (pile->tab)[pile->NumeroSommet + 1] = val;             /*ajouter la valeur à la pile */
 
-	  ++pile->NumeroSommet;	                                 /*augmente le nombre d'element de pile */
+	  ++pile->NumeroSommet;	                                 /*augmenter le nombre d'element de la pile */
 
 }
 
@@ -64,7 +62,7 @@ void empiler(pile_t * pile, int val)
 
 void EstVide(pile_t * pile , enum BOOL * vide)
 {
-	*vide = faux;
+	*vide = faux;	
 
 	if(pile->NumeroSommet == -1)
 	  {
