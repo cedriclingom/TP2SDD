@@ -1,4 +1,4 @@
-
+/*
 #ifndef TRUC_H	
 #define TRUC_H
 
@@ -10,3 +10,4 @@ void truc_recursive(int ,int ,int *);
 
 #endif
 
+*/

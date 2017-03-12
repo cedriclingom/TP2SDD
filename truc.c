@@ -1,4 +1,4 @@
-
+/*
 
 #ifndef TRUC_C	
 #define TRUC_C
@@ -37,4 +37,4 @@ void main()
 
 
 #endif
-		
+*/		

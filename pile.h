@@ -1,32 +1,74 @@
+#ifndef DERECURSIVITE_PILE_H
+#define DERECURSIVITE_PILE_H
 
 
-#ifndef PILE_H
-#define PILE_H
-
-#define TAILLE_MAXX 100
-
-typedef int obj;
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
+
+
+
+#define TAILLE_MAXX 100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+enum BOOL{faux, vrai};
+
+
+
+
+typedef int objet_t; 
 
 typedef struct pile
 {
+
     int taille;
-    int sommet;
-    obj* tab;
+
+    int NumeroSommet;
+
+    objet_t * tab;
+
 } pile_t;
 
-pile_t * initialisation(int );
-void empiler(pile_t **, int, int * );
-int sommet_pile(pile_t *);
-int depiler(pile_t **);
-void liberer_pile(pile_t **);
-void est_vide(pile_t *, int *);
+
+
+
+
+
+
+
+pile_t * InitialisationPile(int);
+
+void EstPleine(pile_t *, enum BOOL *);
+
+void empiler(pile_t *, int);
+
+void EstVide(pile_t *, enum BOOL *);
+
+objet_t depiler(pile_t *);
+
+objet_t SommetPile(pile_t *);
+
+void LibererPile(pile_t **);
+
+void AfficherPile(pile_t *);
+
+void TestFonctionPile();
+
+
+
+
 
 #endif
-	
-
-
-	
