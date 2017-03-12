@@ -11,7 +11,7 @@ pile_t * InitialisationPile (int TaillePile)
 
 	pile_t * pile = (pile_t *)malloc(sizeof(pile_t));
 
-	if(pile != NULL)	                                                /* si l'allocation à reussit*/
+	if(pile != NULL)	                                                /* si l'allocation est reussite*/
 	{
 		pile->taille = TaillePile;				        /*fixer la taille de la pile*/
 
