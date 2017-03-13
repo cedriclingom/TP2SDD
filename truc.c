@@ -1,40 +1,73 @@
-/*
-
-#ifndef TRUC_C	
-#define TRUC_C
-#include "truc.h"
+#include "./truc.h"
 
 
-void truc_recursive(int i,int n,int * tab)
+
+
+
+
+
+
+
+
+
+void AfficheTableau(objet_t * tab, int taille)
 {
-	int j,temp;
-	if(i==n)
+
+  int j;
+
+  for(j=0; j <= taille; j++)
+    {
+      
+      printf("%d\t", tab[j]);
+      
+    }
+  
+  printf("\n");
+
+}
+
+
+
+
+
+void echanger(objet_t * a, objet_t * b)
+{
+
+  objet_t temp;
+  
+  temp = *a;
+
+  *a = *b;
+
+  *b = temp;
+
+}
+
+
+
+void TrucRecursive(int i, int n, objet_t * tab)
+{
+
+	int j, temp;
+
+	if(i == n)
 	{
-		for(j=0;j<n;j++)
-						printf("%d\n",tab[j]);
-		printf("\n");
+
+	  AfficheTableau(tab, n);
+
 	}
 	else
 	{
-		for(j=i-1;j<n;j++)
+
+		for(j = i; j <= n; ++j)
 		{
-			temp = tab[i-1];
-			tab[i-1] = tab[j];
-			tab[j] = temp;
-			truc_recursive(i+1,n,tab);
-			temp = tab[i-1];
-			tab[i-1] = tab[j];
-			tab[j] = temp;
+		   
+		  echanger(tab + i, tab + j);
+
+		  TrucRecursive(i + 1, n, tab);
+
+		  echanger(tab + i, tab + j);
+
 		}
 	}
 }
-void main()
-{
-	int tab[3] = {1,2,3};
-	truc_recursive(1,3,tab);
-}
-
-
-
-#endif
-*/		

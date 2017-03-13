@@ -29,7 +29,7 @@ main : $(OBJ)
 #Règle de production des fichiers objets
 
 
-main.o: main.c pile.h
+main.o: main.c truc.h
 	$(CC) -c main.c $(CFLAGS) $(LDFLAGS)
 
 pile.o: pile.c pile.h 
