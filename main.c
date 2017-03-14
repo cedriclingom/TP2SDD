@@ -8,7 +8,7 @@ int main()
 
   int choix, continuer;
 
-  objet_t tab[3];
+  objet_t tab[4];
 
   do
     {
@@ -18,6 +18,8 @@ int main()
        printf("1. Tester les fonctions et procédures de pile.\n");
        
        printf("2. Exécuter la version récursive de TRUC.\n");
+
+       printf("3. Exécuter la version itérative de TRUC.\n");
        
        scanf("%d", &choix);
        
@@ -37,8 +39,24 @@ int main()
 	   tab[1] = 2;
 	   
 	   tab[2] = 3;
+
+	   tab[3] = 4;
 	   
-	   TrucRecursive(0, 2, tab);		
+	   TrucRecursive(0, 3, tab);		
+	   
+	   break;
+
+	 case 3:
+
+	   tab[0] = 1;
+	   
+	   tab[1] = 2;
+	   
+	   tab[2] = 3;
+
+	   tab[3] = 4;
+	   
+	   TrucIterative(0, 3, tab);		
 	   
 	   break;
 	   

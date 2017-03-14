@@ -9,7 +9,9 @@
 
 
 
-#define TAILLE_MAXX 100
+#define TAILLE_MAX 100
+
+#define TAILLE_PILE 4
 
 
 

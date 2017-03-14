@@ -17,7 +17,7 @@
 
 
 
-void AfficheTableau(objet_t *, int);
+void AfficherTableau(objet_t *, int);
 
 void echanger(objet_t *, objet_t *);
 

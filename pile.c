@@ -49,7 +49,7 @@ void EstPleine(pile_t * pile, enum BOOL * pleine)
 }
 
   
-void empiler(pile_t * pile, int val)
+void empiler(pile_t * pile, objet_t val)
 {	
 
 	  (pile->tab)[pile->NumeroSommet + 1] = val;             /*ajouter la valeur à la pile */
