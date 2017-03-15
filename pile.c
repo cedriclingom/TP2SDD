@@ -1,8 +1,36 @@
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              pile.c                                                */
+/*                                                                                                    */
+/* Role : Définitions des fonctions et procédures permettant la gestion des piles.                    */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
 
 #include "./pile.h"
 
 
 
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* InitialisationPile          Alloue une structure pile ainsi que le tableau servant de pile.        */
+/*                                                                                                    */
+/* En entrée :       TaillePile - Elle représente la taille de la taille.                             */
+/*                                                                                                    */
+/* En sortie :       Renvoie l'adresse de la structure de pile.                                       */
+/*                                                                                                    */
+/* Variable(s) locale(s) :     pile - Pointeur sur la structure de pile.                              */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
 
 
 
@@ -34,6 +62,24 @@ pile_t * InitialisationPile (int TaillePile)
 		
 
 		
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* EstPleine        Vérifie si notre pile est pleine.                                                 */
+/*                                                                                                    */
+/* En entrée :      pile - Pointeur sur la structure de pile.                                         */
+/*                pleine - Pointeur sur la case mémoire contenant vrai ou faux, pour dire comme quoi  */
+/*                         la pile est respectivement pleine ou pas.                                  */
+/*                                                                                                    */
+/* En sortie :    pleine - Pointeur sur la case mémoire contenant vrai ou faux, pour dire comme quoi  */
+/*                         la pile est respectivement pleine ou pas.                                  */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
 		
 void EstPleine(pile_t * pile, enum BOOL * pleine) 
 {
@@ -48,7 +94,25 @@ void EstPleine(pile_t * pile, enum BOOL * pleine)
 
 }
 
-  
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* empiler        Empile une valeur dans la pile (Ajoute une valeur au sommet de la pile).            */
+/*                                                                                                    */
+/* En entrée :    pile - Pointeur sur la structure de pile.                                           */
+/*                 val - La valeur à empiler.                                                         */
+/*                                                                                                    */
+/* En sortie :    Rien en sortie.                                                                     */
+/*                                                                                                    */                 
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
 void empiler(pile_t * pile, objet_t val)
 {	
 
@@ -57,6 +121,25 @@ void empiler(pile_t * pile, objet_t val)
 	  ++pile->NumeroSommet;	                                 /*augmenter le nombre d'element de la pile */
 
 }
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* EstVide        Vérifie si la pile vide.                                                            */
+/*                                                                                                    */
+/* En entrée :    pile - Pointeur sur la structure de pile.                                           */
+/*                vide - Pointeur sur la case mémoire contenant comme valeur vrai ou faux, pour dire  */
+/*                       comme quoi la pile est respectivement vide ou pas.                           */
+/*                                                                                                    */
+/* En sortie :    vide - Pointeur sur la case mémoire contenant comme valeur vrai ou faux, pour dire  */
+/*                       comme quoi la pile est respectivement vide ou pas.                           */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
 
 
 
@@ -75,6 +158,25 @@ void EstVide(pile_t * pile , enum BOOL * vide)
 
 
 
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* depiler        Retire la valeur au sommet et la supprime de la pile.                               */
+/*                                                                                                    */
+/* En entrée :   pile - Pointeur de la structure de pile.                                             */
+/*                                                                                                    */
+/* En sortie :   Retourne le sommet de la sommet.                                                     */
+/*                                                                                                    */
+/* Variable(s) locale(s) :    sommet - Contenant la valeur du sommet de la pile à etre supprimer de   */
+/*                                     la pile.                                                       */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
 objet_t depiler(pile_t * pile)
 {
   objet_t sommet = (pile->tab)[pile->NumeroSommet];   /* sauvegarder le sommet*/
@@ -87,12 +189,44 @@ objet_t depiler(pile_t * pile)
 
 
 
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* SommetPile         Renvoie le sommet de la pile.                                                   */
+/*                                                                                                    */
+/* En entrée :    pile - Pointeur sur la structure de pile.                                           */
+/*                                                                                                    */
+/* En sortie :    La fonction retourne le sommet de la pile.                                          */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
 objet_t SommetPile(pile_t * pile)
 {
 
 	return (pile->tab)[pile->NumeroSommet];
 
 }
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* LibererPile         Libère la pile.                                                                */
+/*                                                                                                    */
+/* En entrée :     ppile - Pointeur de pointeur sur la structure de pile.                             */
+/*                                                                                                    */
+/* En sortie :     ppile - L'adresse du pointeur sur la structure de pile.                            */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
 
 
 
@@ -107,6 +241,23 @@ void LibererPile(pile_t ** ppile)
   *ppile = NULL;
 
 }
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* AfficherPile          Affiche le contenu de notre pile.                                            */
+/*                                                                                                    */
+/* En entrée :    pile - Pointeur sur la structure de pile.                                           */
+/*                                                                                                    */
+/* En sortie :    Rien en sortie.                                                                     */
+/*                                                                                                    */
+/* Variable(s) locale(s) : i - variable servant de variable de boucle.                                */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
 
 
 
@@ -126,6 +277,32 @@ void AfficherPile(pile_t * pile)
 }
 
 
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* TestFonctionPile          Procédure permettant d'utiliser et test le bon fonctionnement des        */
+/*                           fonctions et procédures de pile.                                         */
+/*                                                                                                    */
+/* En entrée :    Rien en entrée.                                                                     */
+/*                                                                                                    */
+/* En sortie :    Rien en sortie.                                                                     */
+/*                                                                                                    */
+/* Variable(s) locale(s) :        choix - Variable permettant de gérer le menu fait avec le switch.   */
+/*                            continuer - Variable permettant de faire choix de continuer l'exécution */
+/*                                        ou pas.                                                     */
+/*                               valeur - La valeur qui va etre dans la pile.                         */
+/*                                 pile - Pointeur sur la structure de pile.                          */
+/*                                 vide - Variable contenant vrai si la pile est vide et faux sinon.  */
+/*                               pleine - Variable contenant vrai si la pile est pleine et faux sinon.*/
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
 void TestFonctionPile()
 {
 
@@ -138,7 +315,7 @@ void TestFonctionPile()
   enum BOOL vide, pleine;
  
   
-  if(pile != NULL)
+  if(pile != NULL)                                         /*si l'allocation de la pile c'est bien passé*/
     {
       
       do
@@ -163,15 +340,15 @@ void TestFonctionPile()
 	      
 	    case 1:
 	      
-	      EstVide(pile,&vide);
+	      EstVide(pile,&vide);                                        /*cherche si la pile est vide*/
 	      
-	      if(vide)
+	      if(vide)                                                    /*si elle vide*/
 		{
 		  
 		  printf(" La pile est vide. ");
 		  
 		}
-	      else
+	      else                                                       /*si elle n'est pas vide*/
 		{
 		  
 		  printf("La pile n'est pas vide.\n");
@@ -182,15 +359,15 @@ void TestFonctionPile()
 	      
 	    case 2:
 	      
-	      EstPleine(pile,&pleine);
+	      EstPleine(pile,&pleine);                                   /*vérifie si la pile est pleine*/
 	      
-	      if(pleine)
+	      if(pleine)                                                 /*si elle est pleine*/
 		{
 		  
 		  printf(" La pile est pleine. ");
 		  
 		}
-	      else
+	      else                                                      /*si elle n'est pas pleine*/
 		{
 		  
 		  printf("La pile n'est pas pleine.\n");
@@ -201,9 +378,9 @@ void TestFonctionPile()
 	      
 	    case 3:
 	      
-	      EstPleine(pile, &pleine);
+	      EstPleine(pile, &pleine);                                 /*vérifie si la pile est pleine*/
 	      
-	      if(!pleine)
+	      if(!pleine)                                               /*si elle n'est pas pleine*/
 		{
 		  printf("Le cotenu de la pile avant d'empiler.\n");
 		  
@@ -213,7 +390,7 @@ void TestFonctionPile()
 		  
 		  scanf("%d", &valeur);
 		  
-		  empiler(pile, valeur);
+		  empiler(pile, valeur);                                /*empiler la valeur*/
 
 		  printf("Le cotenu de la pile après avoir empiler.\n");
 	      
@@ -231,9 +408,9 @@ void TestFonctionPile()
 	      
 	    case 4:
 	      
-	      EstVide(pile, &vide);
+	      EstVide(pile, &vide);                                     /*vérifie si la pile est vide*/
 	      
-	      if(!vide)
+	      if(!vide)                                                 /*si elle n'est pas vide*/
 		{
 
 		  printf("Le cotenu de la pile avant d'empiler.\n\n");
@@ -258,9 +435,9 @@ void TestFonctionPile()
 	      
 	    case 5:
 	      
-	      EstVide(pile, &vide);
+	      EstVide(pile, &vide);                                              /*vérifie si la pile est vide*/
 	      
-	      if(!vide)
+	      if(!vide)                                                          /*si la pile n'est pas vide*/
 		{
 		  printf("Le cotenu de la pile avant d'empiler.\n\n");
 		  

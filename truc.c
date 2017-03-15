@@ -1,3 +1,17 @@
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              truc.c                                                */
+/*                                                                                                    */
+/* Role : Définition des fonctions et procédures permettant de générer toutes les permutations d'un   */
+/*        ensemble de valeurs de manière récursive et de manière itérative.                           */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
 #include "./truc.h"
 
 
@@ -5,6 +19,20 @@
 
 
 
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* AfficherTableau    Affiche les valeurs contenu dans le tableau.                                    */
+/*                                                                                                    */
+/* En entrée :        tab - Pointeur sur un tableau de valeurs.                                       */
+/*                 taille - La taille du tableau.                                                     */
+/*                                                                                                    */
+/* En sortie :     Rien en sortie.                                                                    */
+/*                                                                                                    */
+/* Variable(s) locale(s) :     j - Variable servant de compteur dans la boucle.                       */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
 
 
 
@@ -30,6 +58,26 @@ void AfficherTableau(objet_t * tab, int taille)
 
 
 
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* echanger          Fait l'échange entre deux valeurs.                                               */
+/*                                                                                                    */
+/* En entrée :     a - Pointeur sur la première valeur.                                               */
+/*                 b - Pointeur sur la deuxième valeur.                                               */
+/*                                                                                                    */
+/* En sortie :     a - Pointeur sur la première valeur.                                               */
+/*                 b - Pointeur sur la deuxième valeur.                                               */
+/*                                                                                                    */
+/* Variable(s) locale(s) :     temp - Servant de variable temporaire pour l'échange.                  */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
+
 void echanger(objet_t * a, objet_t * b)
 {
 
@@ -42,6 +90,28 @@ void echanger(objet_t * a, objet_t * b)
   *b = temp;
 
 }
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* TrucRecursive        Donne toutes les permutation des valeurs contenu dans le tableau.             */
+/*                                                                                                    */
+/* En entrée :       i - Servant dans la condition d'affichage et d'initialisation de boucle.         */
+/*                   n - La taille du tableau.                                                        */
+/*                 tab - Pointeur sur le tableau de valeurs devrant etre permuter.                    */
+/*                                                                                                    */
+/* En sortie :     Rien en sortie.                                                                    */
+/*                                                                                                    */
+/* Variable(s) locale(s) :    j - Variable servant de compteur de boucle.                             */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
 
 
 

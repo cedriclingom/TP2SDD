@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              pile.h                                                */
+/*                                                                                                    */
+/* Role : Déclaration des directives de compilation, constantes symboliques, types et prototypes.     */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
 #ifndef DERECURSIVITE_PILE_H
 #define DERECURSIVITE_PILE_H
 
@@ -9,9 +19,9 @@
 
 
 
-#define TAILLE_MAX 100
+#define TAILLE_MAX 100                 /*Taille utiliser pour tester les fonctions de pile*/
 
-#define TAILLE_PILE 4
+#define TAILLE_PILE 4                  /*Taille de la pile utiliser pour la fonction truc itératif*/
 
 
 
