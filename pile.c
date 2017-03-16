@@ -286,9 +286,11 @@ void AfficherPile(pile_t * pile)
 /* TestFonctionPile          Procédure permettant d'utiliser et test le bon fonctionnement des        */
 /*                           fonctions et procédures de pile.                                         */
 /*                                                                                                    */
-/* En entrée :    Rien en entrée.                                                                     */
+/* En entrée :    CodeLecture - Pointeur sur la case contenant une valeur entière comme quoi la       */
+/*                              lecture c'est bien passé ou pas.                                      */
 /*                                                                                                    */
-/* En sortie :    Rien en sortie.                                                                     */
+/* En sortie :    CodeLecture - Pointeur sur la case contenant une valeur entière comme quoi la       */
+/*                              lecture c'est bien passé ou pas.                                      */
 /*                                                                                                    */
 /* Variable(s) locale(s) :        choix - Variable permettant de gérer le menu fait avec le switch.   */
 /*                            continuer - Variable permettant de faire choix de continuer l'exécution */
@@ -303,14 +305,14 @@ void AfficherPile(pile_t * pile)
 
 
 
-void TestFonctionPile()
+void TestFonctionPile(int * CodeLecture)
 {
 
   int choix, continuer;
 
   objet_t valeur;
 
-  pile_t * pile = InitialisationPile(7);
+  pile_t * pile = InitialisationPile(TAILLE_MAX);
   
   enum BOOL vide, pleine;
  
@@ -333,138 +335,146 @@ void TestFonctionPile()
 	  
 	  printf("5. Sommet de la pile.\n");
 	  
-	  scanf("%d", &choix);
-	  
-	  switch(choix)
+	  *CodeLecture = scanf("%d", &choix);
+
+	  if(*CodeLecture)                                                /*si lecture c'est bien passé*/
 	    {
-	      
-	    case 1:
-	      
-	      EstVide(pile,&vide);                                        /*cherche si la pile est vide*/
-	      
-	      if(vide)                                                    /*si elle vide*/
+	  
+	      switch(choix)
 		{
 		  
-		  printf(" La pile est vide. ");
+		case 1:
 		  
+		  EstVide(pile,&vide);                                        /*cherche si la pile est vide*/
+		  
+		  if(vide)                                                    /*si elle vide*/
+		    {
+		      
+		      printf(" La pile est vide. ");
+		      
+		    }
+		  else                                                       /*si elle n'est pas vide*/
+		    {
+		      
+		      printf("La pile n'est pas vide.\n");
+		      
+		    }
+		  
+		  break;
+		  
+		case 2:
+		  
+		  EstPleine(pile,&pleine);                                   /*vérifie si la pile est pleine*/
+		  
+		  if(pleine)                                                 /*si elle est pleine*/
+		    {
+		      
+		      printf(" La pile est pleine. ");
+		      
+		    }
+		  else                                                      /*si elle n'est pas pleine*/
+		    {
+		      
+		      printf("La pile n'est pas pleine.\n");
+		      
+		    }
+		  
+		  break;
+		  
+		case 3:
+		  
+		  EstPleine(pile, &pleine);                                 /*vérifie si la pile est pleine*/
+		  
+		  if(!pleine)                                               /*si elle n'est pas pleine*/
+		    {
+		      printf("Le cotenu de la pile avant d'empiler.\n");
+		      
+		      AfficherPile(pile);
+		      
+		      printf("Veuillez entrer le chiffre à empiler\n");
+		      
+		      *CodeLecture = scanf("%d", &valeur);
+		      
+		      if(*CodeLecture)                                          /*si la lecture c'est bien passé*/
+			{
+			  
+			  empiler(pile, valeur);                                /*empiler la valeur*/
+			  
+			  printf("Le cotenu de la pile après avoir empiler.\n");
+			  
+			  AfficherPile(pile);
+			}
+		      
+		    }
+		  else
+		    {
+		      
+		      printf("La pile est pleine.\n");
+		      
+		    }
+		  
+		  break;
+		  
+		case 4:
+		  
+		  EstVide(pile, &vide);                                     /*vérifie si la pile est vide*/
+		  
+		  if(!vide)                                                 /*si elle n'est pas vide*/
+		    {
+		      
+		      printf("Le cotenu de la pile avant d'empiler.\n\n");
+		      
+		      AfficherPile(pile);
+		      
+		      printf("La valeur dépiler est:\n %d\n\n", depiler(pile));
+		      
+		      printf("Le cotenu de la pile après avoir depiler.\n\n");
+		      
+		      AfficherPile(pile);
+		      
+		    }
+		  else
+		    {
+		      
+		      printf("La pile est vide.\n");
+		      
+		    }
+		  
+		  break;
+		  
+		case 5:
+		  
+		  EstVide(pile, &vide);                                              /*vérifie si la pile est vide*/
+		  
+		  if(!vide)                                                          /*si la pile n'est pas vide*/
+		    {
+		      printf("Le cotenu de la pile avant d'empiler.\n\n");
+		      
+		      AfficherPile(pile);
+		      
+		      printf("Le sommet de la pile est:\n %d\n", SommetPile(pile));
+		      
+		    }
+		  else
+		    {
+		      
+		      printf("La pile est vide.\n");
+		      
+		    }
+		  
+		  break;
+		  
+		default:
+		  
+		  printf("Veuillez entrer le bon numéro!\n");
 		}
-	      else                                                       /*si elle n'est pas vide*/
-		{
-		  
-		  printf("La pile n'est pas vide.\n");
-		  
-		}
-	      
-	      break;
-	      
-	    case 2:
-	      
-	      EstPleine(pile,&pleine);                                   /*vérifie si la pile est pleine*/
-	      
-	      if(pleine)                                                 /*si elle est pleine*/
-		{
-		  
-		  printf(" La pile est pleine. ");
-		  
-		}
-	      else                                                      /*si elle n'est pas pleine*/
-		{
-		  
-		  printf("La pile n'est pas pleine.\n");
-		  
-		}
-	      
-	      break;
-	      
-	    case 3:
-	      
-	      EstPleine(pile, &pleine);                                 /*vérifie si la pile est pleine*/
-	      
-	      if(!pleine)                                               /*si elle n'est pas pleine*/
-		{
-		  printf("Le cotenu de la pile avant d'empiler.\n");
-		  
-		  AfficherPile(pile);
-		  
-		  printf("Veuillez entrer la valeur à empiler\n");
-		  
-		  scanf("%d", &valeur);
-		  
-		  empiler(pile, valeur);                                /*empiler la valeur*/
-
-		  printf("Le cotenu de la pile après avoir empiler.\n");
-	      
-		  AfficherPile(pile);
-		  
-		}
-	      else
-		{
-		  
-		  printf("La pile est pleine.\n");
-		  
-		}
-	      
-	      break;
-	      
-	    case 4:
-	      
-	      EstVide(pile, &vide);                                     /*vérifie si la pile est vide*/
-	      
-	      if(!vide)                                                 /*si elle n'est pas vide*/
-		{
-
-		  printf("Le cotenu de la pile avant d'empiler.\n\n");
-		  
-		  AfficherPile(pile);
-		  
-		  printf("La valeur dépiler est:\n %d\n\n", depiler(pile));
-
-		  printf("Le cotenu de la pile après avoir depiler.\n\n");
-	      
-		  AfficherPile(pile);
-		  
-		}
-	      else
-		{
-		  
-		  printf("La pile est vide.\n");
-		  
-		}
-	      
-	      break;
-	      
-	    case 5:
-	      
-	      EstVide(pile, &vide);                                              /*vérifie si la pile est vide*/
-	      
-	      if(!vide)                                                          /*si la pile n'est pas vide*/
-		{
-		  printf("Le cotenu de la pile avant d'empiler.\n\n");
-		  
-		  AfficherPile(pile);
-		  
-		  printf("Le sommet de la pile est:\n %d\n", SommetPile(pile));
-		  
-		}
-	      else
-		{
-		  
-		  printf("La pile est vide.\n");
-		  
-		}
-	      
-	      break;
-	      
-	    default:
-	      
-	      printf("Veuillez entrer le bon numéro!\n");
 	    }
 	  
-	  printf("\nVoulez-vous continuer?\n Tapez: 1 = Oui  0 = Non\n");
+	  printf("\nVoulez-vous continuer? 1 = OUI  0 = NON\n");
 	  
-	  scanf("%d", &continuer);
+	  *CodeLecture = scanf("%d", &continuer);
 	  
-	}while(continuer);
+	}while((continuer && *CodeLecture) && (pile->NumeroSommet < TAILLE_MAX));
       
       LibererPile(&pile);
       

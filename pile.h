@@ -19,9 +19,7 @@
 
 
 
-#define TAILLE_MAX 100                 /*Taille utiliser pour tester les fonctions de pile*/
-
-#define TAILLE_PILE 4                  /*Taille de la pile utiliser pour la fonction truc itératif*/
+#define TAILLE_MAX 20               /*Taille utiliser pour tester les fonctions de pile*/
 
 
 
@@ -77,7 +75,7 @@ void LibererPile(pile_t **);
 
 void AfficherPile(pile_t *);
 
-void TestFonctionPile();
+void TestFonctionPile(int *);
 
 
 

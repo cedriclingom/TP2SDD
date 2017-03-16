@@ -1,3 +1,19 @@
+/*----------------------------------------------------------------------------------------------------*/
+/*                                              main.c                                                */
+/*                                                                                                    */
+/* Role : La fonction principale faisant appelle à des fonctions qui test les fonctions, qui donne    */
+/*        qui donne toute les permutations de manière récursive et aussi toute les permutation de     */
+/*        manière itérative.Ces fonctions ne sont pas appelé toutes en meme temps mais plutot au      */
+/*        choix grace au ménu.                                                                        */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
 #include "./truc.h"
 
 
@@ -6,9 +22,9 @@
 int main()
 {
 
-  int choix, continuer;
+  int choix, continuer, CodeLecture = 1;
 
-  objet_t tab[4];
+  objet_t tab[TAILLETAB];
 
   do
     {
@@ -21,56 +37,76 @@ int main()
 
        printf("3. Exécuter la version itérative de TRUC.\n");
        
-       scanf("%d", &choix);
-       
-       switch(choix)
+       CodeLecture = scanf("%d", &choix);
+
+       if(CodeLecture)                                                  /*si la lecture c'est bien passé*/
 	 {
 	   
-	 case 1:
-	   
-	   TestFonctionPile();
-	   
-	   break;
-	   
-	 case 2:
-	   
-	   tab[0] = 1;
-	   
-	   tab[1] = 2;
-	   
-	   tab[2] = 3;
+	   switch(choix)
+	     {
+	       
+	     case 1:
+	       
+	       TestFonctionPile(&CodeLecture);
+	       
+	       if(!CodeLecture)
+		 {
+		   
+		   printf("Erreur de lecture!\n");
+		   
+		 }
+	       
+	       break;
+	       
+	     case 2:
+	       
+	       LectureTableau(tab, TAILLETAB, &CodeLecture);
 
-	   tab[3] = 4;
-	   
-	   TrucRecursive(0, 3, tab);		
-	   
-	   break;
+	       if(CodeLecture)
+		 {
+	       
+		   TrucRecursive(1, TAILLETAB, tab);
+		 }
+	       else
+		 {
+		   
+		   printf("Erreur de lecture.\n");
 
-	 case 3:
+		 }
+	       
+	       break;
+	       
+	     case 3:
+	       
+	       LectureTableau(tab, TAILLETAB, &CodeLecture);
+	       
+	       if(CodeLecture)
+		 {
+		   
+		   TrucIterative(1, TAILLETAB, tab);
+		 }
+	       else
+		 {
+		   
+		   printf("Erreur de lecture.\n");
+		   
+		 }		
+	       
+	       break;
+	       
+	     default:
+	       
+	       printf("Vous avez fait le mauvais choix.\n");
+	       
+	     }
 
-	   tab[0] = 1;
-	   
-	   tab[1] = 2;
-	   
-	   tab[2] = 3;
-
-	   tab[3] = 4;
-	   
-	   TrucIterative(0, 3, tab);		
-	   
-	   break;
-	   
-	 default:
-	   
-	   printf("Vous avez fait le mauvais choix.\n");
-	   
 	 }
-       
+	   
        printf("Voulez vous continuer? 1 = OUI   0 = NON\n\n");
        
-       scanf("%d", &continuer);
-
-    }while(continuer);
+       CodeLecture = scanf("%d", &continuer);
+	   
+    }while(continuer && CodeLecture);
   
   return 0;
   

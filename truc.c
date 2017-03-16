@@ -22,6 +22,48 @@
 
 
 
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* LectureTableau    Permet d'entrer les vaeurs qui vont etre permuter dans le tableau.               */
+/*                                                                                                    */
+/* En entrée :             tab - Pointeur sur un tableau de valeurs.                                  */
+/*                      taille - La taille du tableau.                                                */
+/*                 CodeLecture - Pointeur sur la case contenant une valeur permettant de déterminer   */
+/*                               si lecture à reussit ou pas.                                         */
+/*                                                                                                    */
+/* En sortie :     CodeLecture - Pointeur sur la case contenant une valeur permettant de déterminer   */
+/*                               si lecture à reussit ou pas.                                         */
+/*                                                                                                    */
+/* Variable(s) locale(s) :     i - Variable servant de compteur dans la boucle.                       */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
+
+
+
+
+void LectureTableau(objet_t * tab, int taille, int * CodeLecture)
+{
+
+  int i;
+
+  printf("Veuillez les éléments à permuter dans le tableau.\n");
+
+  for(i=0; (i < taille) && (*CodeLecture); ++i)
+    {
+
+      printf("Veuillez entrer l'élément %d\n", i + 1);
+
+      *CodeLecture = scanf("%d", tab + i);
+
+    } 
+
+}
+
+
+
 /*----------------------------------------------------------------------------------------------------*/
 /* AfficherTableau    Affiche les valeurs contenu dans le tableau.                                    */
 /*                                                                                                    */
@@ -43,7 +85,7 @@ void AfficherTableau(objet_t * tab, int taille)
 
   int j;
 
-  for(j=0; j <= taille; j++)
+  for(j=0; j < taille; ++j)
     {
       
       printf("%d\t", tab[j]);
@@ -132,11 +174,11 @@ void TrucRecursive(int i, int n, objet_t * tab)
       for(j = i; j <= n; ++j)
 	{
 	  
-	  echanger(tab + i, tab + j);
+	  echanger(tab + (i-1), tab + (j-1));
 	  
 	  TrucRecursive(i + 1, n, tab);
 	  
-	  echanger(tab + i, tab + j);
+	  echanger(tab + (i-1), tab + (j-1));
 	  
 	}
     }
@@ -144,6 +186,29 @@ void TrucRecursive(int i, int n, objet_t * tab)
 
 
 
+
+
+
+
+
+/*----------------------------------------------------------------------------------------------------*/
+/* TrucIterative        Donne toutes les permutation des valeurs contenu dans le tableau.             */
+/*                                                                                                    */
+/* En entrée :      i - Indice de départ dans le tableau.                                             */
+/*                  n - La taille  du tableau.                                                        */
+/*                tab - Pointeur sur le tableau des valeurs.                                          */
+/*                                                                                                    */
+/* En sortie :    Rien en sortie.                                                                     */
+/*                                                                                                    */
+/* Variable(s) locale(s) :    indice_i - Variable servant de condition de boucle.                     */
+/*                            indice_j - Variable servant de condition de boucle.                     */
+/*                                 fin - Variable contenant vrai pour dire la pile vide donc nous     */
+/*                                       avons donner toute les permutations.Par contre faux veux     */
+/*                                       la pile n'est pas encore vide nous avons pas donné toute les */
+/*                                       les permutations.                                            */
+/*                                pile - Pointeur sur la structure de pile.                           */
+/*                                                                                                    */
+/*----------------------------------------------------------------------------------------------------*/
 
 
 
@@ -164,9 +229,9 @@ void TrucIterative(int i, int n, objet_t * tab)
 
   fin = faux;
 
-  pile = InitialisationPile(TAILLE_PILE);
+  pile = InitialisationPile(2*(n-1));
 
-  if(pile != NULL)
+  if(pile != NULL)                                       /*pile alloué et bien initialiser*/
     {
 
       while(!fin)
@@ -175,7 +240,7 @@ void TrucIterative(int i, int n, objet_t * tab)
 	  while((indice_i < n) && (indice_j <= n))
 	    {
 	      
-	      echanger(tab + indice_i, tab + indice_j);
+	      echanger(tab + (indice_i - 1), tab + (indice_j - 1));
 
 	      empiler(pile, indice_i);
 
@@ -194,7 +259,7 @@ void TrucIterative(int i, int n, objet_t * tab)
 
 	    }
 
-	  EstVide(pile, &fin);
+	  EstVide(pile, &fin);                                       /*vérifie si la pile est vide*/
 
 	  if(!fin)
 	    {
@@ -203,7 +268,7 @@ void TrucIterative(int i, int n, objet_t * tab)
 
 	      indice_i = depiler(pile);
 
-	      echanger(tab + indice_i, tab + indice_j);
+	      echanger(tab + (indice_i - 1), tab + (indice_j -1));
 
 	      ++indice_j;
 
@@ -215,3 +280,4 @@ void TrucIterative(int i, int n, objet_t * tab)
     }
 
 }
+

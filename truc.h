@@ -26,7 +26,13 @@
 
 
 
+#define TAILLETAB 3
 
+
+
+
+
+void LectureTableau(objet_t *, int, int *);
 
 void AfficherTableau(objet_t *, int);
 
