@@ -19,7 +19,7 @@
 
 
 
-#define TAILLE_MAX 20               /*Taille utiliser pour tester les fonctions de pile*/
+#define TAILLE_MAX 10               /*Taille utiliser pour tester les fonctions de pile*/
 
 
 

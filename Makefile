@@ -17,7 +17,7 @@ OBJ = main.o pile.o truc.o
 
 
 #Règle d'éxécution
-exe : main
+execute : main
 	./main
 
 #Regle de production de l'exécutable

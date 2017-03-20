@@ -422,13 +422,13 @@ void TestFonctionPile(int * CodeLecture)
 		  if(!vide)                                                 /*si elle n'est pas vide*/
 		    {
 		      
-		      printf("Le cotenu de la pile avant d'empiler.\n\n");
+		      printf("Le cotenu de la pile avant de dépiler.\n\n");
 		      
 		      AfficherPile(pile);
 		      
 		      printf("La valeur dépiler est:\n %d\n\n", depiler(pile));
 		      
-		      printf("Le cotenu de la pile après avoir depiler.\n\n");
+		      printf("Le cotenu de la pile après avoir dépiler.\n\n");
 		      
 		      AfficherPile(pile);
 		      
@@ -448,7 +448,7 @@ void TestFonctionPile(int * CodeLecture)
 		  
 		  if(!vide)                                                          /*si la pile n'est pas vide*/
 		    {
-		      printf("Le cotenu de la pile avant d'empiler.\n\n");
+		      printf("Le cotenu de la pile est:\n\n");
 		      
 		      AfficherPile(pile);
 		      
