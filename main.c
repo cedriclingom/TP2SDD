@@ -65,7 +65,7 @@ int main()
 	       if(CodeLecture)
 		 {
 	       
-		   TrucRecursive(5, TAILLETAB, tab);
+		   TrucRecursive(1, TAILLETAB, tab);
 		 }
 	       else
 		 {
@@ -83,7 +83,7 @@ int main()
 	       if(CodeLecture)
 		 {
 		   
-		   TrucIterative(5, TAILLETAB, tab);
+		   TrucIterative(1, TAILLETAB, tab);
 		 }
 	       else
 		 {
